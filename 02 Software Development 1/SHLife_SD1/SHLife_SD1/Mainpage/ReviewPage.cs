@@ -172,11 +172,11 @@ namespace SHLife_SD1.Mainpage {
             e.ThrowException = false;
         }
 
-        DetailReviewForm dForm;
         private async void dgvDetails_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             if (e.RowIndex < 0) return;
             DataGridViewRow row = dgvDetails.Rows[e.RowIndex];
             Guid detailId = (Guid)row.Cells["colDetailId"].Value;
+            DialogResult diagResult;
 
             if (e.ColumnIndex == 8) {
                 DetailViewModel currentDetail = _DetailDataSource
@@ -187,11 +187,11 @@ namespace SHLife_SD1.Mainpage {
                     return;
                 }
 
-                dForm?.Dispose();
-                dForm = null;
-                dForm = new DetailReviewForm(detailId);
+                using (var diag = new DetailReviewForm(detailId)) {
+                    diagResult = diag.ShowDialog();
+                }
 
-                if (dForm.ShowDialog() == DialogResult.OK) {
+                if (diagResult == DialogResult.OK) {
                     int newStatus = 0, newApplicationStatus = 0;
                     string newComment = string.Empty, newApplicationComment = string.Empty;
 

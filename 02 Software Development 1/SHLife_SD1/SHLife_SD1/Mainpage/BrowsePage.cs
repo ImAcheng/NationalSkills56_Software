@@ -105,7 +105,7 @@ namespace SHLife_SD1.Mainpage {
                         colRole      = x.MemberRole,
                         colAvailable = x.DeletionDateTime == null ? "Yes" : "No",
                         colUpdated   = x.UpdateDateTime.ToStdString(),
-                        colDeletion = x.DeletionDateTime.ToStdString()
+                        colDeletion  = x.DeletionDateTime.ToStdString()
                 }).ToList());
             }
 

@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace SHLife_SD1.Mainpage.Review {
     public partial class DetailReviewForm : Form {
@@ -33,6 +32,11 @@ namespace SHLife_SD1.Mainpage.Review {
         }
 
         private async Task _SetDetailStatus(int newStatus, string comment) {
+            if (string.IsNullOrWhiteSpace(comment)) {
+                MessageBox.Show("Comment 不可為空。");
+                return;
+            }
+
             using (var db = new SHLife_A07Entities())
             using (var transcation = db.Database.BeginTransaction()) {
                 try {
@@ -42,7 +46,7 @@ namespace SHLife_SD1.Mainpage.Review {
                     OfficialAccountApplication application = detail.OfficialAccountApplication;
 
                     // this shouldn't be happended
-                    // but in case to prevent some specific situations, u konw
+                    // but in case to prevent some situations, u konw
                     if (detail == null) {
                         MessageBox.Show("Invalid Detail Data.", "SHLife",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -87,19 +91,6 @@ namespace SHLife_SD1.Mainpage.Review {
 
                     transcation.Rollback();
                 }
-            }
-        }
-
-        private async Task AddDataAsync(int newStatus, string comment) {
-            using (var db = new SHLife_A07Entities()) {
-                ApplicationDetail detail = new ApplicationDetail() {
-                    ApplicationDetailId = Guid.NewGuid(),
-                    // ... 填入 Not Null 資料
-                };
-
-                db.ApplicationDetail.Add(detail);
-
-                await db.SaveChangesAsync();
             }
         }
     }

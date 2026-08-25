@@ -12,14 +12,12 @@ namespace SHLife_SD1.Mainpage {
             InitializeComponent();
         }
 
-        private BindingList<PostViewModel> _PostDataSource;
-
         private async void PostPage_Load(object sender, EventArgs e) {
             dgvPosts.Font = GlobalAsset.DgvFont;
             dgvPosts.ReadOnly = true;
             dgvPosts.AllowUserToAddRows = false;
             dgvPosts.AutoGenerateColumns = false;
-            dgvPosts.AllowUserToResizeRows = false; // 阻止使用者調整 Row 高度 (*僅參考用 競賽不要弄)
+            dgvPosts.AllowUserToResizeRows = false; // 阻止使用者調整 Row 高度 (*僅參考用)
 
             cbMedia.SelectedIndex = 0;
             panelDetail.Hide();
@@ -51,23 +49,21 @@ namespace SHLife_SD1.Mainpage {
                         x.CreateDateTime >= dateStart && x.CreateDateTime < dateEnd
                     )).OrderByDescending(x => x.CreateDateTime).ToListAsync();
 
-                _PostDataSource = new BindingList<PostViewModel>(
-                    source.Select(x => new PostViewModel() {
+                dgvPosts.DataSource =
+                    source.Select(x => new {
                         colPostId = x.PostId,
                         colPostNo = x.PostNo,
                         colPostNickname = x.Account.Nickname,
                         colMessage = _CutString(x.Message, 50),
                         colCreation = x.CreateDateTime.ToStdString()
-                }).ToList());
+                }).ToList();
             }
-
-            dgvPosts.DataSource = _PostDataSource;
         }
 
+        /// <summary>
+        ///     Cut a string by length and put afterString at the end.
+        /// </summary>
         private static string _CutString(string value, int length, string afterString = "...") {
-            // Summary:
-            // Cut a string by length and put afterString at the end.
-
             return value.Length <= length ? value : value.Remove(length) + afterString;
         }
 
@@ -127,13 +123,5 @@ namespace SHLife_SD1.Mainpage {
         private void llbOperations_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
 
         }
-    }
-
-    public class PostViewModel {
-        public Guid colPostId { get; set; }
-        public long colPostNo { get; set; }
-        public string colPostNickname { get; set; }
-        public string colMessage { get; set; }
-        public string colCreation { get; set; }
     }
 }
