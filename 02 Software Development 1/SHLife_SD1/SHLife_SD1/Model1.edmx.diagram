@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27e7777ef1cc4684950cd7c149746b77" Name="Diagram1">
+        <EntityTypeShape EntityType="SHLife_A07Model.Account" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.AccountThirdPartyIdentity" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.ApplicationDetail" Width="1.5" PointX="5.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.ChatRoom" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.ChatRoomMember" Width="1.5" PointX="8.25" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.ChatRoomRecord" Width="1.5" PointX="13.5" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.FileAgentData" Width="1.5" PointX="0.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.Friend" Width="1.5" PointX="5.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.OfficialAccount" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.OfficialAccountApplication" Width="1.5" PointX="8.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.OfficialMember" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.Post" Width="1.5" PointX="5.25" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.PostComment" Width="1.5" PointX="7.5" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.PostMedia" Width="1.5" PointX="7.5" PointY="43.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.PostOperation" Width="1.5" PointX="10.5" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.Sticker" Width="1.5" PointX="7.5" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.StickerGroup" Width="1.5" PointX="5.25" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHLife_A07Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SHLife_A07Model.FK__Applicati__New_R__6AEFE058" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Account_FileAgentData" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_AccountThiredPartyIdentity_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Application_ApplicantAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Application_ReviewerAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_ChatRoomMember_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Friend_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Friend_Account1" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_OfficialMember_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Post_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_PostComment_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_PostOperation_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_StickerGroup_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Detail_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_ChatRoom_FileAgentData" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_ChatRoomMember_ChatRoom" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_ChatRoomRecord_ChatRoom" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_ChatRoomRecord_ChatRoomMember" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_ChatRoomRecord_Sticker" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Sticker_FileAgentData" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Application_OfficialAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_OfficialMember_OfficialAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_PostComment_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_PostMedia_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_PostOperation_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_PostComment_PostComment" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_PostComment_Sticker" ManuallyRouted="false" />
+        <AssociationConnector Association="SHLife_A07Model.FK_Sticker_StickerGroup" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

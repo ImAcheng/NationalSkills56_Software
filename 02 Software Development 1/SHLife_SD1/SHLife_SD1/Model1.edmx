@@ -1,0 +1,1766 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SHLife_A07Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccountNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="511" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Nickname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AvatarFileAgnetDataId" Type="uniqueidentifier" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="Role" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="LockDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="LockReason" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="AccountThirdPartyIdentity">
+          <Key>
+            <PropertyRef Name="AccountThirdPartyIdentityId" />
+          </Key>
+          <Property Name="AccountThirdPartyIdentityId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccountThirdPartyIdentityNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Provider" Type="int" Nullable="false" />
+          <Property Name="Feild" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="511" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="ApplicationDetail">
+          <Key>
+            <PropertyRef Name="ApplicationDetailId" />
+          </Key>
+          <Property Name="ApplicationDetailId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplicationDetailNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficialAccountApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="511" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="New_ReviewerAccountId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="ChatRoom">
+          <Key>
+            <PropertyRef Name="ChatRoomId" />
+          </Key>
+          <Property Name="ChatRoomId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChatRoomNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AvatarFileAgentDataId" Type="uniqueidentifier" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="ChatRoomMember">
+          <Key>
+            <PropertyRef Name="ChatRoomMemberId" />
+          </Key>
+          <Property Name="ChatRoomMemberId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChatRoomMemberNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatRoomId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Role" Type="int" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="ChatRoomRecord">
+          <Key>
+            <PropertyRef Name="ChatRoomRecordId" />
+          </Key>
+          <Property Name="ChatRoomRecordId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChatRoomRecordNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatRoomId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ChatRoomMemberId" Type="uniqueidentifier" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="511" />
+          <Property Name="StickerId" Type="uniqueidentifier" />
+          <Property Name="FileAgentDataId" Type="uniqueidentifier" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="FileAgentData">
+          <Key>
+            <PropertyRef Name="FileAgentDataId" />
+          </Key>
+          <Property Name="FileAgentDataId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileAgentDataNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="MimeType" Type="nvarchar" MaxLength="127" Nullable="false" />
+          <Property Name="Filename" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="511" Nullable="false" />
+          <Property Name="ThumbnailUrl" Type="nvarchar" MaxLength="511" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="Friend">
+          <Key>
+            <PropertyRef Name="FriendId" />
+          </Key>
+          <Property Name="FriendId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FriendNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FriendAccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OfficialAccount">
+          <Key>
+            <PropertyRef Name="OfficialAccountId" />
+          </Key>
+          <Property Name="OfficialAccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OfficialAccountNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficialName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="511" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="IsVerified" Type="bit" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="OfficialAccountApplication">
+          <Key>
+            <PropertyRef Name="OfficialAccountApplicationId" />
+          </Key>
+          <Property Name="OfficialAccountApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OfficialAccountApplicationNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficialAccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ReviewerAccountId" Type="uniqueidentifier" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="OfficialMember">
+          <Key>
+            <PropertyRef Name="OfficialMemberId" />
+          </Key>
+          <Property Name="OfficialMemberId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OfficialMemberNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficialAccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MemberRole" Type="nvarchar" MaxLength="127" Nullable="false" />
+          <Property Name="PermissionLevel" Type="int" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="DeletionDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="2047" Nullable="false" />
+          <Property Name="PrivacyPolicyType" Type="int" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="PostComment">
+          <Key>
+            <PropertyRef Name="PostCommentId" />
+          </Key>
+          <Property Name="PostCommentId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostCommentNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1023" />
+          <Property Name="StickerId" Type="uniqueidentifier" />
+          <Property Name="ReplyPostCommentId" Type="uniqueidentifier" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="PostMedia">
+          <Key>
+            <PropertyRef Name="PostMediaId" />
+          </Key>
+          <Property Name="PostMediaId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostMediaNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderNo" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="FileAgentDataId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="PostOperation">
+          <Key>
+            <PropertyRef Name="PostOperationId" />
+          </Key>
+          <Property Name="PostOperationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostOperationNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PostId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1023" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="Sticker">
+          <Key>
+            <PropertyRef Name="StickerId" />
+          </Key>
+          <Property Name="StickerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StickerNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StickerGroupId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FileAgentDataId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StickerGroup">
+          <Key>
+            <PropertyRef Name="StickerGroupId" />
+          </Key>
+          <Property Name="StickerGroupId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StickerGroupNo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="OwnerAccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__Applicati__New_R__6AEFE058">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="ApplicationDetail" Type="Self.ApplicationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="ApplicationDetail">
+              <PropertyRef Name="New_ReviewerAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_FileAgentData">
+          <End Role="FileAgentData" Type="Self.FileAgentData" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileAgentData">
+              <PropertyRef Name="FileAgentDataId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="AvatarFileAgnetDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountThiredPartyIdentity_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountThirdPartyIdentity" Type="Self.AccountThirdPartyIdentity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AccountThirdPartyIdentity">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_ApplicantAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="OfficialAccountApplication" Type="Self.OfficialAccountApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="OfficialAccountApplication">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_OfficialAccount">
+          <End Role="OfficialAccount" Type="Self.OfficialAccount" Multiplicity="1" />
+          <End Role="OfficialAccountApplication" Type="Self.OfficialAccountApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficialAccount">
+              <PropertyRef Name="OfficialAccountId" />
+            </Principal>
+            <Dependent Role="OfficialAccountApplication">
+              <PropertyRef Name="OfficialAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_ReviewerAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="OfficialAccountApplication" Type="Self.OfficialAccountApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="OfficialAccountApplication">
+              <PropertyRef Name="ReviewerAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoom_FileAgentData">
+          <End Role="FileAgentData" Type="Self.FileAgentData" Multiplicity="0..1" />
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileAgentData">
+              <PropertyRef Name="FileAgentDataId" />
+            </Principal>
+            <Dependent Role="ChatRoom">
+              <PropertyRef Name="AvatarFileAgentDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomMember_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="ChatRoomMember" Type="Self.ChatRoomMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="ChatRoomMember">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomMember_ChatRoom">
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
+          <End Role="ChatRoomMember" Type="Self.ChatRoomMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatRoom">
+              <PropertyRef Name="ChatRoomId" />
+            </Principal>
+            <Dependent Role="ChatRoomMember">
+              <PropertyRef Name="ChatRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomRecord_ChatRoom">
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
+          <End Role="ChatRoomRecord" Type="Self.ChatRoomRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatRoom">
+              <PropertyRef Name="ChatRoomId" />
+            </Principal>
+            <Dependent Role="ChatRoomRecord">
+              <PropertyRef Name="ChatRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomRecord_ChatRoomMember">
+          <End Role="ChatRoomMember" Type="Self.ChatRoomMember" Multiplicity="0..1" />
+          <End Role="ChatRoomRecord" Type="Self.ChatRoomRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatRoomMember">
+              <PropertyRef Name="ChatRoomMemberId" />
+            </Principal>
+            <Dependent Role="ChatRoomRecord">
+              <PropertyRef Name="ChatRoomMemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomRecord_Sticker">
+          <End Role="Sticker" Type="Self.Sticker" Multiplicity="0..1" />
+          <End Role="ChatRoomRecord" Type="Self.ChatRoomRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sticker">
+              <PropertyRef Name="StickerId" />
+            </Principal>
+            <Dependent Role="ChatRoomRecord">
+              <PropertyRef Name="StickerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detail_Application">
+          <End Role="OfficialAccountApplication" Type="Self.OfficialAccountApplication" Multiplicity="1" />
+          <End Role="ApplicationDetail" Type="Self.ApplicationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficialAccountApplication">
+              <PropertyRef Name="OfficialAccountApplicationId" />
+            </Principal>
+            <Dependent Role="ApplicationDetail">
+              <PropertyRef Name="OfficialAccountApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Friend_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Friend_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="FriendAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialMember_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="OfficialMember" Type="Self.OfficialMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="OfficialMember">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialMember_OfficialAccount">
+          <End Role="OfficialAccount" Type="Self.OfficialAccount" Multiplicity="1" />
+          <End Role="OfficialMember" Type="Self.OfficialMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficialAccount">
+              <PropertyRef Name="OfficialAccountId" />
+            </Principal>
+            <Dependent Role="OfficialMember">
+              <PropertyRef Name="OfficialAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_PostComment">
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="0..1" />
+          <End Role="PostComment1" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PostComment">
+              <PropertyRef Name="PostCommentId" />
+            </Principal>
+            <Dependent Role="PostComment1">
+              <PropertyRef Name="ReplyPostCommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Sticker">
+          <End Role="Sticker" Type="Self.Sticker" Multiplicity="0..1" />
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sticker">
+              <PropertyRef Name="StickerId" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="StickerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostMedia_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostMedia" Type="Self.PostMedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostMedia">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostOperation_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="PostOperation" Type="Self.PostOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="PostOperation">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostOperation_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostOperation" Type="Self.PostOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostOperation">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sticker_FileAgentData">
+          <End Role="FileAgentData" Type="Self.FileAgentData" Multiplicity="1" />
+          <End Role="Sticker" Type="Self.Sticker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileAgentData">
+              <PropertyRef Name="FileAgentDataId" />
+            </Principal>
+            <Dependent Role="Sticker">
+              <PropertyRef Name="FileAgentDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sticker_StickerGroup">
+          <End Role="StickerGroup" Type="Self.StickerGroup" Multiplicity="1" />
+          <End Role="Sticker" Type="Self.Sticker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StickerGroup">
+              <PropertyRef Name="StickerGroupId" />
+            </Principal>
+            <Dependent Role="Sticker">
+              <PropertyRef Name="StickerGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StickerGroup_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="StickerGroup" Type="Self.StickerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="StickerGroup">
+              <PropertyRef Name="OwnerAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SHLife_A07ModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountThirdPartyIdentity" EntityType="Self.AccountThirdPartyIdentity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationDetail" EntityType="Self.ApplicationDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatRoom" EntityType="Self.ChatRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatRoomMember" EntityType="Self.ChatRoomMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatRoomRecord" EntityType="Self.ChatRoomRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileAgentData" EntityType="Self.FileAgentData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Friend" EntityType="Self.Friend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfficialAccount" EntityType="Self.OfficialAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfficialAccountApplication" EntityType="Self.OfficialAccountApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfficialMember" EntityType="Self.OfficialMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostComment" EntityType="Self.PostComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostMedia" EntityType="Self.PostMedia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostOperation" EntityType="Self.PostOperation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sticker" EntityType="Self.Sticker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StickerGroup" EntityType="Self.StickerGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Applicati__New_R__6AEFE058" Association="Self.FK__Applicati__New_R__6AEFE058">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="ApplicationDetail" EntitySet="ApplicationDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_FileAgentData" Association="Self.FK_Account_FileAgentData">
+            <End Role="FileAgentData" EntitySet="FileAgentData" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountThiredPartyIdentity_Account" Association="Self.FK_AccountThiredPartyIdentity_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountThirdPartyIdentity" EntitySet="AccountThirdPartyIdentity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_ApplicantAccount" Association="Self.FK_Application_ApplicantAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="OfficialAccountApplication" EntitySet="OfficialAccountApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_OfficialAccount" Association="Self.FK_Application_OfficialAccount">
+            <End Role="OfficialAccount" EntitySet="OfficialAccount" />
+            <End Role="OfficialAccountApplication" EntitySet="OfficialAccountApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_ReviewerAccount" Association="Self.FK_Application_ReviewerAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="OfficialAccountApplication" EntitySet="OfficialAccountApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoom_FileAgentData" Association="Self.FK_ChatRoom_FileAgentData">
+            <End Role="FileAgentData" EntitySet="FileAgentData" />
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomMember_Account" Association="Self.FK_ChatRoomMember_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="ChatRoomMember" EntitySet="ChatRoomMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomMember_ChatRoom" Association="Self.FK_ChatRoomMember_ChatRoom">
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+            <End Role="ChatRoomMember" EntitySet="ChatRoomMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomRecord_ChatRoom" Association="Self.FK_ChatRoomRecord_ChatRoom">
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+            <End Role="ChatRoomRecord" EntitySet="ChatRoomRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomRecord_ChatRoomMember" Association="Self.FK_ChatRoomRecord_ChatRoomMember">
+            <End Role="ChatRoomMember" EntitySet="ChatRoomMember" />
+            <End Role="ChatRoomRecord" EntitySet="ChatRoomRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomRecord_Sticker" Association="Self.FK_ChatRoomRecord_Sticker">
+            <End Role="Sticker" EntitySet="Sticker" />
+            <End Role="ChatRoomRecord" EntitySet="ChatRoomRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detail_Application" Association="Self.FK_Detail_Application">
+            <End Role="OfficialAccountApplication" EntitySet="OfficialAccountApplication" />
+            <End Role="ApplicationDetail" EntitySet="ApplicationDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Friend_Account" Association="Self.FK_Friend_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Friend_Account1" Association="Self.FK_Friend_Account1">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialMember_Account" Association="Self.FK_OfficialMember_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="OfficialMember" EntitySet="OfficialMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialMember_OfficialAccount" Association="Self.FK_OfficialMember_OfficialAccount">
+            <End Role="OfficialAccount" EntitySet="OfficialAccount" />
+            <End Role="OfficialMember" EntitySet="OfficialMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_Account" Association="Self.FK_Post_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Account" Association="Self.FK_PostComment_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Post" Association="Self.FK_PostComment_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_PostComment" Association="Self.FK_PostComment_PostComment">
+            <End Role="PostComment" EntitySet="PostComment" />
+            <End Role="PostComment1" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Sticker" Association="Self.FK_PostComment_Sticker">
+            <End Role="Sticker" EntitySet="Sticker" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostMedia_Post" Association="Self.FK_PostMedia_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostMedia" EntitySet="PostMedia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostOperation_Account" Association="Self.FK_PostOperation_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="PostOperation" EntitySet="PostOperation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostOperation_Post" Association="Self.FK_PostOperation_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostOperation" EntitySet="PostOperation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sticker_FileAgentData" Association="Self.FK_Sticker_FileAgentData">
+            <End Role="FileAgentData" EntitySet="FileAgentData" />
+            <End Role="Sticker" EntitySet="Sticker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sticker_StickerGroup" Association="Self.FK_Sticker_StickerGroup">
+            <End Role="StickerGroup" EntitySet="StickerGroup" />
+            <End Role="Sticker" EntitySet="Sticker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StickerGroup_Account" Association="Self.FK_StickerGroup_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="StickerGroup" EntitySet="StickerGroup" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SHLife_A07Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="AccountNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="511" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nickname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AvatarFileAgnetDataId" Type="Guid" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Role" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LockDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="LockReason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplicationDetail" Relationship="Self.FK__Applicati__New_R__6AEFE058" FromRole="Account" ToRole="ApplicationDetail" />
+          <NavigationProperty Name="FileAgentData" Relationship="Self.FK_Account_FileAgentData" FromRole="Account" ToRole="FileAgentData" />
+          <NavigationProperty Name="AccountThirdPartyIdentity" Relationship="Self.FK_AccountThiredPartyIdentity_Account" FromRole="Account" ToRole="AccountThirdPartyIdentity" />
+          <NavigationProperty Name="OfficialAccountApplication" Relationship="Self.FK_Application_ApplicantAccount" FromRole="Account" ToRole="OfficialAccountApplication" />
+          <NavigationProperty Name="OfficialAccountApplication1" Relationship="Self.FK_Application_ReviewerAccount" FromRole="Account" ToRole="OfficialAccountApplication" />
+          <NavigationProperty Name="ChatRoomMember" Relationship="Self.FK_ChatRoomMember_Account" FromRole="Account" ToRole="ChatRoomMember" />
+          <NavigationProperty Name="Friend" Relationship="Self.FK_Friend_Account" FromRole="Account" ToRole="Friend" />
+          <NavigationProperty Name="Friend1" Relationship="Self.FK_Friend_Account1" FromRole="Account" ToRole="Friend" />
+          <NavigationProperty Name="OfficialMember" Relationship="Self.FK_OfficialMember_Account" FromRole="Account" ToRole="OfficialMember" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Post_Account" FromRole="Account" ToRole="Post" />
+          <NavigationProperty Name="PostComment" Relationship="Self.FK_PostComment_Account" FromRole="Account" ToRole="PostComment" />
+          <NavigationProperty Name="PostOperation" Relationship="Self.FK_PostOperation_Account" FromRole="Account" ToRole="PostOperation" />
+          <NavigationProperty Name="StickerGroup" Relationship="Self.FK_StickerGroup_Account" FromRole="Account" ToRole="StickerGroup" />
+        </EntityType>
+        <EntityType Name="AccountThirdPartyIdentity">
+          <Key>
+            <PropertyRef Name="AccountThirdPartyIdentityId" />
+          </Key>
+          <Property Name="AccountThirdPartyIdentityId" Type="Guid" Nullable="false" />
+          <Property Name="AccountThirdPartyIdentityNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="Provider" Type="Int32" Nullable="false" />
+          <Property Name="Feild" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="511" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_AccountThiredPartyIdentity_Account" FromRole="AccountThirdPartyIdentity" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="ApplicationDetail">
+          <Key>
+            <PropertyRef Name="ApplicationDetailId" />
+          </Key>
+          <Property Name="ApplicationDetailId" Type="Guid" Nullable="false" />
+          <Property Name="ApplicationDetailNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficialAccountApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="511" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="New_ReviewerAccountId" Type="Guid" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Applicati__New_R__6AEFE058" FromRole="ApplicationDetail" ToRole="Account" />
+          <NavigationProperty Name="OfficialAccountApplication" Relationship="Self.FK_Detail_Application" FromRole="ApplicationDetail" ToRole="OfficialAccountApplication" />
+        </EntityType>
+        <EntityType Name="ChatRoom">
+          <Key>
+            <PropertyRef Name="ChatRoomId" />
+          </Key>
+          <Property Name="ChatRoomId" Type="Guid" Nullable="false" />
+          <Property Name="ChatRoomNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AvatarFileAgentDataId" Type="Guid" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="FileAgentData" Relationship="Self.FK_ChatRoom_FileAgentData" FromRole="ChatRoom" ToRole="FileAgentData" />
+          <NavigationProperty Name="ChatRoomMember" Relationship="Self.FK_ChatRoomMember_ChatRoom" FromRole="ChatRoom" ToRole="ChatRoomMember" />
+          <NavigationProperty Name="ChatRoomRecord" Relationship="Self.FK_ChatRoomRecord_ChatRoom" FromRole="ChatRoom" ToRole="ChatRoomRecord" />
+        </EntityType>
+        <EntityType Name="ChatRoomMember">
+          <Key>
+            <PropertyRef Name="ChatRoomMemberId" />
+          </Key>
+          <Property Name="ChatRoomMemberId" Type="Guid" Nullable="false" />
+          <Property Name="ChatRoomMemberNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatRoomId" Type="Guid" Nullable="false" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="Role" Type="Int32" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_ChatRoomMember_Account" FromRole="ChatRoomMember" ToRole="Account" />
+          <NavigationProperty Name="ChatRoom" Relationship="Self.FK_ChatRoomMember_ChatRoom" FromRole="ChatRoomMember" ToRole="ChatRoom" />
+          <NavigationProperty Name="ChatRoomRecord" Relationship="Self.FK_ChatRoomRecord_ChatRoomMember" FromRole="ChatRoomMember" ToRole="ChatRoomRecord" />
+        </EntityType>
+        <EntityType Name="ChatRoomRecord">
+          <Key>
+            <PropertyRef Name="ChatRoomRecordId" />
+          </Key>
+          <Property Name="ChatRoomRecordId" Type="Guid" Nullable="false" />
+          <Property Name="ChatRoomRecordNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatRoomId" Type="Guid" Nullable="false" />
+          <Property Name="ChatRoomMemberId" Type="Guid" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="511" FixedLength="false" Unicode="true" />
+          <Property Name="StickerId" Type="Guid" />
+          <Property Name="FileAgentDataId" Type="Guid" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="ChatRoom" Relationship="Self.FK_ChatRoomRecord_ChatRoom" FromRole="ChatRoomRecord" ToRole="ChatRoom" />
+          <NavigationProperty Name="ChatRoomMember" Relationship="Self.FK_ChatRoomRecord_ChatRoomMember" FromRole="ChatRoomRecord" ToRole="ChatRoomMember" />
+          <NavigationProperty Name="Sticker" Relationship="Self.FK_ChatRoomRecord_Sticker" FromRole="ChatRoomRecord" ToRole="Sticker" />
+        </EntityType>
+        <EntityType Name="FileAgentData">
+          <Key>
+            <PropertyRef Name="FileAgentDataId" />
+          </Key>
+          <Property Name="FileAgentDataId" Type="Guid" Nullable="false" />
+          <Property Name="FileAgentDataNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="MimeType" Type="String" MaxLength="127" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Filename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="511" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThumbnailUrl" Type="String" MaxLength="511" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_FileAgentData" FromRole="FileAgentData" ToRole="Account" />
+          <NavigationProperty Name="ChatRoom" Relationship="Self.FK_ChatRoom_FileAgentData" FromRole="FileAgentData" ToRole="ChatRoom" />
+          <NavigationProperty Name="Sticker" Relationship="Self.FK_Sticker_FileAgentData" FromRole="FileAgentData" ToRole="Sticker" />
+        </EntityType>
+        <EntityType Name="Friend">
+          <Key>
+            <PropertyRef Name="FriendId" />
+          </Key>
+          <Property Name="FriendId" Type="Guid" Nullable="false" />
+          <Property Name="FriendNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="FriendAccountId" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Friend_Account" FromRole="Friend" ToRole="Account" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK_Friend_Account1" FromRole="Friend" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="OfficialAccount">
+          <Key>
+            <PropertyRef Name="OfficialAccountId" />
+          </Key>
+          <Property Name="OfficialAccountId" Type="Guid" Nullable="false" />
+          <Property Name="OfficialAccountNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficialName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="511" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="IsVerified" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="OfficialAccountApplication" Relationship="Self.FK_Application_OfficialAccount" FromRole="OfficialAccount" ToRole="OfficialAccountApplication" />
+          <NavigationProperty Name="OfficialMember" Relationship="Self.FK_OfficialMember_OfficialAccount" FromRole="OfficialAccount" ToRole="OfficialMember" />
+        </EntityType>
+        <EntityType Name="OfficialAccountApplication">
+          <Key>
+            <PropertyRef Name="OfficialAccountApplicationId" />
+          </Key>
+          <Property Name="OfficialAccountApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="OfficialAccountApplicationNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficialAccountId" Type="Guid" Nullable="false" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ReviewerAccountId" Type="Guid" />
+          <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Application_ApplicantAccount" FromRole="OfficialAccountApplication" ToRole="Account" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK_Application_ReviewerAccount" FromRole="OfficialAccountApplication" ToRole="Account" />
+          <NavigationProperty Name="ApplicationDetail" Relationship="Self.FK_Detail_Application" FromRole="OfficialAccountApplication" ToRole="ApplicationDetail" />
+          <NavigationProperty Name="OfficialAccount" Relationship="Self.FK_Application_OfficialAccount" FromRole="OfficialAccountApplication" ToRole="OfficialAccount" />
+        </EntityType>
+        <EntityType Name="OfficialMember">
+          <Key>
+            <PropertyRef Name="OfficialMemberId" />
+          </Key>
+          <Property Name="OfficialMemberId" Type="Guid" Nullable="false" />
+          <Property Name="OfficialMemberNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficialAccountId" Type="Guid" Nullable="false" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="MemberRole" Type="String" MaxLength="127" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PermissionLevel" Type="Int32" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="DeletionDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_OfficialMember_Account" FromRole="OfficialMember" ToRole="Account" />
+          <NavigationProperty Name="OfficialAccount" Relationship="Self.FK_OfficialMember_OfficialAccount" FromRole="OfficialMember" ToRole="OfficialAccount" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Guid" Nullable="false" />
+          <Property Name="PostNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="2047" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrivacyPolicyType" Type="Int32" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Post_Account" FromRole="Post" ToRole="Account" />
+          <NavigationProperty Name="PostComment" Relationship="Self.FK_PostComment_Post" FromRole="Post" ToRole="PostComment" />
+          <NavigationProperty Name="PostMedia" Relationship="Self.FK_PostMedia_Post" FromRole="Post" ToRole="PostMedia" />
+          <NavigationProperty Name="PostOperation" Relationship="Self.FK_PostOperation_Post" FromRole="Post" ToRole="PostOperation" />
+        </EntityType>
+        <EntityType Name="PostComment">
+          <Key>
+            <PropertyRef Name="PostCommentId" />
+          </Key>
+          <Property Name="PostCommentId" Type="Guid" Nullable="false" />
+          <Property Name="PostCommentNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostId" Type="Guid" Nullable="false" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="1023" FixedLength="false" Unicode="true" />
+          <Property Name="StickerId" Type="Guid" />
+          <Property Name="ReplyPostCommentId" Type="Guid" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_PostComment_Account" FromRole="PostComment" ToRole="Account" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_PostComment_Post" FromRole="PostComment" ToRole="Post" />
+          <NavigationProperty Name="PostComment1" Relationship="Self.FK_PostComment_PostComment" FromRole="PostComment" ToRole="PostComment1" />
+          <NavigationProperty Name="PostComment2" Relationship="Self.FK_PostComment_PostComment" FromRole="PostComment1" ToRole="PostComment" />
+          <NavigationProperty Name="Sticker" Relationship="Self.FK_PostComment_Sticker" FromRole="PostComment" ToRole="Sticker" />
+        </EntityType>
+        <EntityType Name="PostMedia">
+          <Key>
+            <PropertyRef Name="PostMediaId" />
+          </Key>
+          <Property Name="PostMediaId" Type="Guid" Nullable="false" />
+          <Property Name="PostMediaNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostId" Type="Guid" Nullable="false" />
+          <Property Name="OrderNo" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="FileAgentDataId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_PostMedia_Post" FromRole="PostMedia" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="PostOperation">
+          <Key>
+            <PropertyRef Name="PostOperationId" />
+          </Key>
+          <Property Name="PostOperationId" Type="Guid" Nullable="false" />
+          <Property Name="PostOperationNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="PostId" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="1023" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_PostOperation_Account" FromRole="PostOperation" ToRole="Account" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_PostOperation_Post" FromRole="PostOperation" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="Sticker">
+          <Key>
+            <PropertyRef Name="StickerId" />
+          </Key>
+          <Property Name="StickerId" Type="Guid" Nullable="false" />
+          <Property Name="StickerNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StickerGroupId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileAgentDataId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ChatRoomRecord" Relationship="Self.FK_ChatRoomRecord_Sticker" FromRole="Sticker" ToRole="ChatRoomRecord" />
+          <NavigationProperty Name="FileAgentData" Relationship="Self.FK_Sticker_FileAgentData" FromRole="Sticker" ToRole="FileAgentData" />
+          <NavigationProperty Name="PostComment" Relationship="Self.FK_PostComment_Sticker" FromRole="Sticker" ToRole="PostComment" />
+          <NavigationProperty Name="StickerGroup" Relationship="Self.FK_Sticker_StickerGroup" FromRole="Sticker" ToRole="StickerGroup" />
+        </EntityType>
+        <EntityType Name="StickerGroup">
+          <Key>
+            <PropertyRef Name="StickerGroupId" />
+          </Key>
+          <Property Name="StickerGroupId" Type="Guid" Nullable="false" />
+          <Property Name="StickerGroupNo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OwnerAccountId" Type="Guid" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_StickerGroup_Account" FromRole="StickerGroup" ToRole="Account" />
+          <NavigationProperty Name="Sticker" Relationship="Self.FK_Sticker_StickerGroup" FromRole="StickerGroup" ToRole="Sticker" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Applicati__New_R__6AEFE058">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="ApplicationDetail" Type="Self.ApplicationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="ApplicationDetail">
+              <PropertyRef Name="New_ReviewerAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_FileAgentData">
+          <End Role="FileAgentData" Type="Self.FileAgentData" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileAgentData">
+              <PropertyRef Name="FileAgentDataId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="AvatarFileAgnetDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountThiredPartyIdentity_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountThirdPartyIdentity" Type="Self.AccountThirdPartyIdentity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AccountThirdPartyIdentity">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_ApplicantAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="OfficialAccountApplication" Type="Self.OfficialAccountApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="OfficialAccountApplication">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_ReviewerAccount">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="OfficialAccountApplication" Type="Self.OfficialAccountApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="OfficialAccountApplication">
+              <PropertyRef Name="ReviewerAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomMember_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="ChatRoomMember" Type="Self.ChatRoomMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="ChatRoomMember">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Friend_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Friend_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Friend" Type="Self.Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="FriendAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialMember_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="OfficialMember" Type="Self.OfficialMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="OfficialMember">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostOperation_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="PostOperation" Type="Self.PostOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="PostOperation">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StickerGroup_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="StickerGroup" Type="Self.StickerGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="StickerGroup">
+              <PropertyRef Name="OwnerAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Detail_Application">
+          <End Role="OfficialAccountApplication" Type="Self.OfficialAccountApplication" Multiplicity="1" />
+          <End Role="ApplicationDetail" Type="Self.ApplicationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficialAccountApplication">
+              <PropertyRef Name="OfficialAccountApplicationId" />
+            </Principal>
+            <Dependent Role="ApplicationDetail">
+              <PropertyRef Name="OfficialAccountApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoom_FileAgentData">
+          <End Role="FileAgentData" Type="Self.FileAgentData" Multiplicity="0..1" />
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileAgentData">
+              <PropertyRef Name="FileAgentDataId" />
+            </Principal>
+            <Dependent Role="ChatRoom">
+              <PropertyRef Name="AvatarFileAgentDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomMember_ChatRoom">
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
+          <End Role="ChatRoomMember" Type="Self.ChatRoomMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatRoom">
+              <PropertyRef Name="ChatRoomId" />
+            </Principal>
+            <Dependent Role="ChatRoomMember">
+              <PropertyRef Name="ChatRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomRecord_ChatRoom">
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
+          <End Role="ChatRoomRecord" Type="Self.ChatRoomRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatRoom">
+              <PropertyRef Name="ChatRoomId" />
+            </Principal>
+            <Dependent Role="ChatRoomRecord">
+              <PropertyRef Name="ChatRoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomRecord_ChatRoomMember">
+          <End Role="ChatRoomMember" Type="Self.ChatRoomMember" Multiplicity="0..1" />
+          <End Role="ChatRoomRecord" Type="Self.ChatRoomRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatRoomMember">
+              <PropertyRef Name="ChatRoomMemberId" />
+            </Principal>
+            <Dependent Role="ChatRoomRecord">
+              <PropertyRef Name="ChatRoomMemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoomRecord_Sticker">
+          <End Role="Sticker" Type="Self.Sticker" Multiplicity="0..1" />
+          <End Role="ChatRoomRecord" Type="Self.ChatRoomRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sticker">
+              <PropertyRef Name="StickerId" />
+            </Principal>
+            <Dependent Role="ChatRoomRecord">
+              <PropertyRef Name="StickerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sticker_FileAgentData">
+          <End Role="FileAgentData" Type="Self.FileAgentData" Multiplicity="1" />
+          <End Role="Sticker" Type="Self.Sticker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileAgentData">
+              <PropertyRef Name="FileAgentDataId" />
+            </Principal>
+            <Dependent Role="Sticker">
+              <PropertyRef Name="FileAgentDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_OfficialAccount">
+          <End Role="OfficialAccount" Type="Self.OfficialAccount" Multiplicity="1" />
+          <End Role="OfficialAccountApplication" Type="Self.OfficialAccountApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficialAccount">
+              <PropertyRef Name="OfficialAccountId" />
+            </Principal>
+            <Dependent Role="OfficialAccountApplication">
+              <PropertyRef Name="OfficialAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialMember_OfficialAccount">
+          <End Role="OfficialAccount" Type="Self.OfficialAccount" Multiplicity="1" />
+          <End Role="OfficialMember" Type="Self.OfficialMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficialAccount">
+              <PropertyRef Name="OfficialAccountId" />
+            </Principal>
+            <Dependent Role="OfficialMember">
+              <PropertyRef Name="OfficialAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostMedia_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostMedia" Type="Self.PostMedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostMedia">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostOperation_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostOperation" Type="Self.PostOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostOperation">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_PostComment">
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="0..1" />
+          <End Role="PostComment1" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PostComment">
+              <PropertyRef Name="PostCommentId" />
+            </Principal>
+            <Dependent Role="PostComment1">
+              <PropertyRef Name="ReplyPostCommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComment_Sticker">
+          <End Role="Sticker" Type="Self.Sticker" Multiplicity="0..1" />
+          <End Role="PostComment" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sticker">
+              <PropertyRef Name="StickerId" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="StickerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sticker_StickerGroup">
+          <End Role="StickerGroup" Type="Self.StickerGroup" Multiplicity="1" />
+          <End Role="Sticker" Type="Self.Sticker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StickerGroup">
+              <PropertyRef Name="StickerGroupId" />
+            </Principal>
+            <Dependent Role="Sticker">
+              <PropertyRef Name="StickerGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SHLife_A07Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="AccountThirdPartyIdentity" EntityType="Self.AccountThirdPartyIdentity" />
+          <EntitySet Name="ApplicationDetail" EntityType="Self.ApplicationDetail" />
+          <EntitySet Name="ChatRoom" EntityType="Self.ChatRoom" />
+          <EntitySet Name="ChatRoomMember" EntityType="Self.ChatRoomMember" />
+          <EntitySet Name="ChatRoomRecord" EntityType="Self.ChatRoomRecord" />
+          <EntitySet Name="FileAgentData" EntityType="Self.FileAgentData" />
+          <EntitySet Name="Friend" EntityType="Self.Friend" />
+          <EntitySet Name="OfficialAccount" EntityType="Self.OfficialAccount" />
+          <EntitySet Name="OfficialAccountApplication" EntityType="Self.OfficialAccountApplication" />
+          <EntitySet Name="OfficialMember" EntityType="Self.OfficialMember" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="PostComment" EntityType="Self.PostComment" />
+          <EntitySet Name="PostMedia" EntityType="Self.PostMedia" />
+          <EntitySet Name="PostOperation" EntityType="Self.PostOperation" />
+          <EntitySet Name="Sticker" EntityType="Self.Sticker" />
+          <EntitySet Name="StickerGroup" EntityType="Self.StickerGroup" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK__Applicati__New_R__6AEFE058" Association="Self.FK__Applicati__New_R__6AEFE058">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="ApplicationDetail" EntitySet="ApplicationDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_FileAgentData" Association="Self.FK_Account_FileAgentData">
+            <End Role="FileAgentData" EntitySet="FileAgentData" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountThiredPartyIdentity_Account" Association="Self.FK_AccountThiredPartyIdentity_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountThirdPartyIdentity" EntitySet="AccountThirdPartyIdentity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_ApplicantAccount" Association="Self.FK_Application_ApplicantAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="OfficialAccountApplication" EntitySet="OfficialAccountApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_ReviewerAccount" Association="Self.FK_Application_ReviewerAccount">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="OfficialAccountApplication" EntitySet="OfficialAccountApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomMember_Account" Association="Self.FK_ChatRoomMember_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="ChatRoomMember" EntitySet="ChatRoomMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Friend_Account" Association="Self.FK_Friend_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Friend_Account1" Association="Self.FK_Friend_Account1">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Friend" EntitySet="Friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialMember_Account" Association="Self.FK_OfficialMember_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="OfficialMember" EntitySet="OfficialMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_Account" Association="Self.FK_Post_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Account" Association="Self.FK_PostComment_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostOperation_Account" Association="Self.FK_PostOperation_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="PostOperation" EntitySet="PostOperation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StickerGroup_Account" Association="Self.FK_StickerGroup_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="StickerGroup" EntitySet="StickerGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Detail_Application" Association="Self.FK_Detail_Application">
+            <End Role="OfficialAccountApplication" EntitySet="OfficialAccountApplication" />
+            <End Role="ApplicationDetail" EntitySet="ApplicationDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoom_FileAgentData" Association="Self.FK_ChatRoom_FileAgentData">
+            <End Role="FileAgentData" EntitySet="FileAgentData" />
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomMember_ChatRoom" Association="Self.FK_ChatRoomMember_ChatRoom">
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+            <End Role="ChatRoomMember" EntitySet="ChatRoomMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomRecord_ChatRoom" Association="Self.FK_ChatRoomRecord_ChatRoom">
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+            <End Role="ChatRoomRecord" EntitySet="ChatRoomRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomRecord_ChatRoomMember" Association="Self.FK_ChatRoomRecord_ChatRoomMember">
+            <End Role="ChatRoomMember" EntitySet="ChatRoomMember" />
+            <End Role="ChatRoomRecord" EntitySet="ChatRoomRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoomRecord_Sticker" Association="Self.FK_ChatRoomRecord_Sticker">
+            <End Role="Sticker" EntitySet="Sticker" />
+            <End Role="ChatRoomRecord" EntitySet="ChatRoomRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sticker_FileAgentData" Association="Self.FK_Sticker_FileAgentData">
+            <End Role="FileAgentData" EntitySet="FileAgentData" />
+            <End Role="Sticker" EntitySet="Sticker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_OfficialAccount" Association="Self.FK_Application_OfficialAccount">
+            <End Role="OfficialAccount" EntitySet="OfficialAccount" />
+            <End Role="OfficialAccountApplication" EntitySet="OfficialAccountApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialMember_OfficialAccount" Association="Self.FK_OfficialMember_OfficialAccount">
+            <End Role="OfficialAccount" EntitySet="OfficialAccount" />
+            <End Role="OfficialMember" EntitySet="OfficialMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Post" Association="Self.FK_PostComment_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostMedia_Post" Association="Self.FK_PostMedia_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostMedia" EntitySet="PostMedia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostOperation_Post" Association="Self.FK_PostOperation_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="PostOperation" EntitySet="PostOperation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_PostComment" Association="Self.FK_PostComment_PostComment">
+            <End Role="PostComment" EntitySet="PostComment" />
+            <End Role="PostComment1" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComment_Sticker" Association="Self.FK_PostComment_Sticker">
+            <End Role="Sticker" EntitySet="Sticker" />
+            <End Role="PostComment" EntitySet="PostComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sticker_StickerGroup" Association="Self.FK_Sticker_StickerGroup">
+            <End Role="StickerGroup" EntitySet="StickerGroup" />
+            <End Role="Sticker" EntitySet="Sticker" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SHLife_A07ModelStoreContainer" CdmEntityContainer="SHLife_A07Entities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="SHLife_A07Model.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="AvatarFileAgnetDataId" ColumnName="AvatarFileAgnetDataId" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="LockDateTime" ColumnName="LockDateTime" />
+                <ScalarProperty Name="LockReason" ColumnName="LockReason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountThirdPartyIdentity">
+            <EntityTypeMapping TypeName="SHLife_A07Model.AccountThirdPartyIdentity">
+              <MappingFragment StoreEntitySet="AccountThirdPartyIdentity">
+                <ScalarProperty Name="AccountThirdPartyIdentityId" ColumnName="AccountThirdPartyIdentityId" />
+                <ScalarProperty Name="AccountThirdPartyIdentityNo" ColumnName="AccountThirdPartyIdentityNo" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="Feild" ColumnName="Feild" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationDetail">
+            <EntityTypeMapping TypeName="SHLife_A07Model.ApplicationDetail">
+              <MappingFragment StoreEntitySet="ApplicationDetail">
+                <ScalarProperty Name="ApplicationDetailId" ColumnName="ApplicationDetailId" />
+                <ScalarProperty Name="ApplicationDetailNo" ColumnName="ApplicationDetailNo" />
+                <ScalarProperty Name="OfficialAccountApplicationId" ColumnName="OfficialAccountApplicationId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+                <ScalarProperty Name="New_ReviewerAccountId" ColumnName="New_ReviewerAccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatRoom">
+            <EntityTypeMapping TypeName="SHLife_A07Model.ChatRoom">
+              <MappingFragment StoreEntitySet="ChatRoom">
+                <ScalarProperty Name="ChatRoomId" ColumnName="ChatRoomId" />
+                <ScalarProperty Name="ChatRoomNo" ColumnName="ChatRoomNo" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AvatarFileAgentDataId" ColumnName="AvatarFileAgentDataId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatRoomMember">
+            <EntityTypeMapping TypeName="SHLife_A07Model.ChatRoomMember">
+              <MappingFragment StoreEntitySet="ChatRoomMember">
+                <ScalarProperty Name="ChatRoomMemberId" ColumnName="ChatRoomMemberId" />
+                <ScalarProperty Name="ChatRoomMemberNo" ColumnName="ChatRoomMemberNo" />
+                <ScalarProperty Name="ChatRoomId" ColumnName="ChatRoomId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatRoomRecord">
+            <EntityTypeMapping TypeName="SHLife_A07Model.ChatRoomRecord">
+              <MappingFragment StoreEntitySet="ChatRoomRecord">
+                <ScalarProperty Name="ChatRoomRecordId" ColumnName="ChatRoomRecordId" />
+                <ScalarProperty Name="ChatRoomRecordNo" ColumnName="ChatRoomRecordNo" />
+                <ScalarProperty Name="ChatRoomId" ColumnName="ChatRoomId" />
+                <ScalarProperty Name="ChatRoomMemberId" ColumnName="ChatRoomMemberId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="StickerId" ColumnName="StickerId" />
+                <ScalarProperty Name="FileAgentDataId" ColumnName="FileAgentDataId" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileAgentData">
+            <EntityTypeMapping TypeName="SHLife_A07Model.FileAgentData">
+              <MappingFragment StoreEntitySet="FileAgentData">
+                <ScalarProperty Name="FileAgentDataId" ColumnName="FileAgentDataId" />
+                <ScalarProperty Name="FileAgentDataNo" ColumnName="FileAgentDataNo" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ThumbnailUrl" ColumnName="ThumbnailUrl" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Friend">
+            <EntityTypeMapping TypeName="SHLife_A07Model.Friend">
+              <MappingFragment StoreEntitySet="Friend">
+                <ScalarProperty Name="FriendId" ColumnName="FriendId" />
+                <ScalarProperty Name="FriendNo" ColumnName="FriendNo" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="FriendAccountId" ColumnName="FriendAccountId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficialAccount">
+            <EntityTypeMapping TypeName="SHLife_A07Model.OfficialAccount">
+              <MappingFragment StoreEntitySet="OfficialAccount">
+                <ScalarProperty Name="OfficialAccountId" ColumnName="OfficialAccountId" />
+                <ScalarProperty Name="OfficialAccountNo" ColumnName="OfficialAccountNo" />
+                <ScalarProperty Name="OfficialName" ColumnName="OfficialName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficialAccountApplication">
+            <EntityTypeMapping TypeName="SHLife_A07Model.OfficialAccountApplication">
+              <MappingFragment StoreEntitySet="OfficialAccountApplication">
+                <ScalarProperty Name="OfficialAccountApplicationId" ColumnName="OfficialAccountApplicationId" />
+                <ScalarProperty Name="OfficialAccountApplicationNo" ColumnName="OfficialAccountApplicationNo" />
+                <ScalarProperty Name="OfficialAccountId" ColumnName="OfficialAccountId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ReviewerAccountId" ColumnName="ReviewerAccountId" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficialMember">
+            <EntityTypeMapping TypeName="SHLife_A07Model.OfficialMember">
+              <MappingFragment StoreEntitySet="OfficialMember">
+                <ScalarProperty Name="OfficialMemberId" ColumnName="OfficialMemberId" />
+                <ScalarProperty Name="OfficialMemberNo" ColumnName="OfficialMemberNo" />
+                <ScalarProperty Name="OfficialAccountId" ColumnName="OfficialAccountId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="MemberRole" ColumnName="MemberRole" />
+                <ScalarProperty Name="PermissionLevel" ColumnName="PermissionLevel" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+                <ScalarProperty Name="DeletionDateTime" ColumnName="DeletionDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="SHLife_A07Model.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="PostNo" ColumnName="PostNo" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PrivacyPolicyType" ColumnName="PrivacyPolicyType" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostComment">
+            <EntityTypeMapping TypeName="SHLife_A07Model.PostComment">
+              <MappingFragment StoreEntitySet="PostComment">
+                <ScalarProperty Name="PostCommentId" ColumnName="PostCommentId" />
+                <ScalarProperty Name="PostCommentNo" ColumnName="PostCommentNo" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="StickerId" ColumnName="StickerId" />
+                <ScalarProperty Name="ReplyPostCommentId" ColumnName="ReplyPostCommentId" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostMedia">
+            <EntityTypeMapping TypeName="SHLife_A07Model.PostMedia">
+              <MappingFragment StoreEntitySet="PostMedia">
+                <ScalarProperty Name="PostMediaId" ColumnName="PostMediaId" />
+                <ScalarProperty Name="PostMediaNo" ColumnName="PostMediaNo" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="FileAgentDataId" ColumnName="FileAgentDataId" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostOperation">
+            <EntityTypeMapping TypeName="SHLife_A07Model.PostOperation">
+              <MappingFragment StoreEntitySet="PostOperation">
+                <ScalarProperty Name="PostOperationId" ColumnName="PostOperationId" />
+                <ScalarProperty Name="PostOperationNo" ColumnName="PostOperationNo" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sticker">
+            <EntityTypeMapping TypeName="SHLife_A07Model.Sticker">
+              <MappingFragment StoreEntitySet="Sticker">
+                <ScalarProperty Name="StickerId" ColumnName="StickerId" />
+                <ScalarProperty Name="StickerNo" ColumnName="StickerNo" />
+                <ScalarProperty Name="StickerGroupId" ColumnName="StickerGroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FileAgentDataId" ColumnName="FileAgentDataId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StickerGroup">
+            <EntityTypeMapping TypeName="SHLife_A07Model.StickerGroup">
+              <MappingFragment StoreEntitySet="StickerGroup">
+                <ScalarProperty Name="StickerGroupId" ColumnName="StickerGroupId" />
+                <ScalarProperty Name="StickerGroupNo" ColumnName="StickerGroupNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerAccountId" ColumnName="OwnerAccountId" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SHLife_A07Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
