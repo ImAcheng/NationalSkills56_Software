@@ -36,7 +36,7 @@
             this.btnLogInOut = new System.Windows.Forms.Button();
             this.lbNameRole = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbApiStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelWindowBar.SuspendLayout();
             this.panelWindow.SuspendLayout();
@@ -142,7 +142,7 @@
             this.panelStatus.Controls.Add(this.btnLogInOut);
             this.panelStatus.Controls.Add(this.lbNameRole);
             this.panelStatus.Controls.Add(this.label3);
-            this.panelStatus.Controls.Add(this.label2);
+            this.panelStatus.Controls.Add(this.lbApiStatus);
             this.panelStatus.Controls.Add(this.label1);
             this.panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelStatus.Location = new System.Drawing.Point(0, 0);
@@ -190,14 +190,14 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Site Endpoint: http://localhost:5000";
             // 
-            // label2
+            // lbApiStatus
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(97, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Connecting...";
+            this.lbApiStatus.AutoSize = true;
+            this.lbApiStatus.Location = new System.Drawing.Point(97, 7);
+            this.lbApiStatus.Name = "lbApiStatus";
+            this.lbApiStatus.Size = new System.Drawing.Size(99, 18);
+            this.lbApiStatus.TabIndex = 1;
+            this.lbApiStatus.Text = "Connecting...";
             // 
             // label1
             // 
@@ -241,7 +241,7 @@
         private System.Windows.Forms.Panel panelStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbApiStatus;
         private System.Windows.Forms.Label lbNameRole;
         private System.Windows.Forms.Button btnLogInOut;
         private System.Windows.Forms.Label lbTime;

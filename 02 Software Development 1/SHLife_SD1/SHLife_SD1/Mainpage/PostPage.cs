@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SHLife_SD1.Mainpage.Post;
+using System;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
@@ -67,7 +68,9 @@ namespace SHLife_SD1.Mainpage {
             return value.Length <= length ? value : value.Remove(length) + afterString;
         }
 
+        private Guid _CurrentPostId;
         private async Task _SetPostDetail(Guid postId) {
+            _CurrentPostId = postId;
             using (var db = new SHLife_A07Entities()) {
                 var post = await db.Post.SingleOrDefaultAsync(x => x.PostId == postId);
 
@@ -113,15 +116,17 @@ namespace SHLife_SD1.Mainpage {
         }
 
         private void llbComments_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-
+            using (var form = new CommentForm(_CurrentPostId)) {
+                form.ShowDialog();
+            }
         }
 
         private void llbMedias_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-
+            // 目前沒有資料所以沒做 但技術上來說更上面一樣
         }
 
         private void llbOperations_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-
+            // 同上
         }
     }
 }

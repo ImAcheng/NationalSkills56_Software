@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +27,8 @@ namespace SHLife_SD1 {
             Interval = 5000,
             Enabled = true
         };
+
+        public static HttpClient apiClient = new HttpClient();
 
         // pages & form
         public static Form1 instance;
@@ -50,8 +53,17 @@ namespace SHLife_SD1 {
             lbTime.Text = DateTime.Now.ToString("'Time': yyyy-MM-dd HH:mm:ss");
         }
 
-        private void ApiTimer_Tick(object sender, EventArgs e) {
+        private async void ApiTimer_Tick(object sender, EventArgs e) {
+            try {
+                await apiClient.GetAsync("http://localhost:5000");
 
+                lbApiStatus.Text = "Connected";
+                lbApiStatus.ForeColor = Color.FromArgb(0, 176, 80);
+            }
+            catch {
+                lbApiStatus.Text = "Disconnected";
+                lbApiStatus.ForeColor = Color.Red;
+            }
         }
 
         #region Window Control

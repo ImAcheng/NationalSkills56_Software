@@ -50,16 +50,18 @@ namespace SHLife_SD1.Login {
             Account account;
 
             using (var db = new SHLife_A07Entities()) {
-                account = await db.Account.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
+                account = await db.Account
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
 
-                if (account == null || account.LockDateTime != null) {
+                if (account == null || account.Role == "1") {
                     return new LoginResult() {
                         Success = false,
                         Message = "Cannot login with your credential."
                     };
                 }
 
-                if (account.Role == "1") {
+                if (account.LockDateTime != null) {
                     return new LoginResult() {
                         Success = false,
                         Message = "Your account has been locked."

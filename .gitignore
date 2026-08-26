@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 DB_SQL/*.bak
+相關說明文件/
 
 # User-specific files
 *.rsuser

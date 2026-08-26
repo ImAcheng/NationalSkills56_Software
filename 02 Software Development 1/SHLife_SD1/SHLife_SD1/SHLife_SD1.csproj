@@ -117,6 +117,12 @@
     <Compile Include="Mainpage\PostPage.Designer.cs">
       <DependentUpon>PostPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mainpage\Post\CommentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mainpage\Post\CommentForm.Designer.cs">
+      <DependentUpon>CommentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mainpage\ReviewPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -173,6 +179,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SHLife_A07DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SHLife_A07DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SHLife_A07DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Sticker.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -196,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mainpage\PostPage.resx">
       <DependentUpon>PostPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mainpage\Post\CommentForm.resx">
+      <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mainpage\ReviewPage.resx">
       <DependentUpon>ReviewPage.cs</DependentUpon>
@@ -240,6 +254,17 @@
     </None>
     <None Include="SHLife_A07DataSet.xss">
       <DependentUpon>SHLife_A07DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SHLife_A07DataSet1.xsc">
+      <DependentUpon>SHLife_A07DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SHLife_A07DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SHLife_A07DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SHLife_A07DataSet1.xss">
+      <DependentUpon>SHLife_A07DataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
